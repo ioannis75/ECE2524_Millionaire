@@ -1,21 +1,21 @@
 What is the symbol to represent a pipe?
-A. |
+A. &
 B. $
-C. &
+C. |
 D. !
-A
+C
 Which of the following commands lists the contents of the current directory?
-A. ls
+A. mkdir
 B. pwd
 C. cd
-D. mkdir
-A
+D. ls
+D
 Which of the following commands prints output of a file to the screen?
-A. cat
-B. cd
+A. cd
+B. cat
 C. pwd
 D. ls
-A
+B
 Which of the following commands prints the date to the screen of the terminal?
 A. date
 B. whatis
@@ -23,23 +23,23 @@ C. whois
 D. ls
 A
 Which of following commands prints a file to the screen?
-A. less
+A. pwd
 B. cd
-C. pwd
+C. less
 D. ls
-A
+C
 Which of the following commmands can be used to determine how to use another command?
-A. man
+A. head
 B. cat
 C. pg
-D. head
-A
+D. man
+D
 Which of the following commands is not a filter
-A. man
+A. head
 B. cat
 C. pg
-D. head
-A
+D. man
+D
 What is a filter?
 A. A program which can receive a flow of data from std input, process (or filter) it and send the result ot std output
 B. Something for a Brita water container
@@ -47,17 +47,17 @@ C. Program that sensors the content of a file
 D. A program that strips out all comments from the source code of a program before compiling
 A
 Which of the following redirect operators would redirect the contents of 'testfile' to std input?
-A. <
+A. >>
 B. <<
-C. >>
+C. <
 D. >
-A
+C
 Which of the following commands is a pattern search command?
-A. grep
+A. ls
 B. man
-C. ls
+C. grep
 D. wc
-A
+C
 What is the effect of the command 'Kill $!'?
 A. Kills the last background job
 B. Kills the current foreground job
@@ -71,23 +71,23 @@ C. Deletes all files in the current directory
 D. Deletes all subdirectories of the current directory
 A
 What does the command 'du' stand for?
-A. Disk Usage
-B. Dumb Unix
+A. Dumb Unix
+B. Disk Usage
 C. Display Unix System
 D. Display Universal Variables
-A
+B
 Which of the following commands would count the number of characters in a file?
-A. wc -c
-B. wc
+A. wc
+B. wc -c
 C. wc -l
 D. wc -w
-A
+B
 Which variable stores the prompt that is presented to the user before each command in the terminal?
-A. PS1
+A. PS
 B. PROMPT
 C. GLOBALPROMPT
-D. PS
-A
+D. PS1
+D
 What is redirection?
 A. Directing the flow of data to the file or from the file for input or output
 B. Running a program in reverse
@@ -95,11 +95,11 @@ C. The Unix equivalent of the undo button
 D. Taking a 'left turn' in a Unix program
 A
 What is the term for the exact path from the root directory?
-A. Absolute Path
-B. Relative Path
+A. Relative Path
+B. Absolute Path
 C. Exact Path
 D. There is no term for this path
-A
+B
 What is the term for the path that is relative to the current path?
 A. Relative Path
 B. Absolute Path
@@ -107,11 +107,11 @@ C. Exact Path
 D. There is no term for this path
 A
 Which symbol allows for multiple commands to be ran on a single line?
-A. ;
+A. :
 B. 1
 C. !
-D. :
-A
+D. ;
+D
 Which common operating system is based off of Unix?
 A. Mac OSX
 B. Windows 7
@@ -119,8 +119,8 @@ C. Windows 95
 D. Embedded Windows
 A
 Which of the following commands creates a copy of a file?
-A. cp
+A. wc
 B. hc
-C. wc
+C. cp
 D. rm
-A
+C
