@@ -1,3 +1,21 @@
 This will be a game written in mainly C++ that will be similar to the popular game TV Show - Who wants to be a millionaire?
 
 Documentation:
+The game works very similar to the TV show.
+There are 15 rounds worth of questions and you can win some fake money.
+After you have reached certain levels, you can walk away with a set amount of money.
+You get one Lifeline which will get rid of half the answer choices.
+
+Implementation:
+There is a questions file which anyone can modify and add questions too.
+
+It follows a format like this:
+Question
+Choice A
+Choice B
+Choice C
+Choice D
+Answer
+
+The game looks at that pool and grabs 15 random questions and stores that into a list.
+Then the game begins!
