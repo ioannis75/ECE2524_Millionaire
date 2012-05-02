@@ -6,8 +6,15 @@ There are 15 rounds worth of questions and you can win some fake money.
 After you have reached certain levels, you can walk away with a set amount of money.
 You get one Lifeline which will get rid of half the answer choices.
 
-In order to start the game, compile the game by typing "make".
-Then, type "./main" to begin.
+Install:
+Switch to the directory where you stored this repository.
+Type the following commands into the command line:
+'make Makefile all'
+'chmod +x main'
+'./main'
+
+It will then ask you if you want to play Who Wants to be a Millionaire?
+Type 'yes' and begin playing the game.
 
 Implementation:
 There is a questions file which anyone can modify and add questions too.
