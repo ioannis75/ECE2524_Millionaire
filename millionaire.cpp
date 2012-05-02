@@ -7,7 +7,7 @@ using namespace std;
 
 millionaire::millionaire(void)
 {
-	int tier = 1;
+	int tier = 0;
 	int round = 1;
 	int score = 0;
 	int life1 = 0 ;
@@ -23,7 +23,6 @@ void millionaire::play(void)
 	create_question_pool();
 	question_read();
 	final_screen();
-	while(1);
 	return;
 }
 
@@ -74,7 +73,7 @@ void millionaire::question_read(void)
 			getline(std::cin, response, '\n' );
 			if (response == "Lifeline")
 				{
-					cout << "Do you want to use your Lifeline to eliminate half the answer choices?" << endl;
+					cout << "Do you want to use your Lifeline to eliminate half the answer choices? If so, type yes" << endl;
 					getline(std::cin, response, '\n' );
 					if (response == "yes")
 						{
@@ -93,25 +92,30 @@ void millionaire::question_read(void)
 									cout << endl << "You have no more Lifelines! Here are the question and answer choices again:" << endl << endl;
 								}
 						}
-					else cout << endl << "Here the question and answer choices again:" << endl << endl;
+					else cout << endl << "You have to type yes. Here the question and answer choices again:" << endl << endl;
 				}
 			else break;
 		}
-
-		if (check_answer(it->answer, response)) 
+		
+		if((response == "A")||(response == "B")||(response == "C")||(response == "D"))
 			{
-				adjust_score();
-				it++;
-				cout << endl;
-			}
-		else return;
+				if (check_answer(it->answer, response)) 
+					{
+						adjust_score();
+						it++;
+						cout << endl;
+					}
+				else return;
 
-		if (round == 16) return;
-		else
-			{
-				cout << "Press Enter to proceed to the next question" << endl;
-				cin.get();
+				if (round == 16) return;
+				else
+					{
+						cout << "Press Enter to proceed to the next question" << endl;
+						cin.get();
+					}
 			}
+		else cout << "You must enter A, B, C, D, or Lifeline" << endl << endl;
+
 	}
 }
 
@@ -262,7 +266,7 @@ void millionaire::life_line(string A, string B, string C, string D, string answe
 
 void millionaire::create_question_pool(void)
 {
-	ifstream questions ("Flowers_Questions");
+	ifstream questions ("questions");
 	question_node temp, question;
 	list<question_node> temp_list;
 	list<question_node>::iterator temp_it;
@@ -284,7 +288,6 @@ void millionaire::create_question_pool(void)
 				}
 			questions.close();
 		}
-//	for (it = question_pool.begin(); it != question_pool.end(); it++ );
 
 	for (int i = 0; i <= 14; i++)
 	{
