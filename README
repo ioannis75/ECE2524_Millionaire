@@ -6,6 +6,9 @@ There are 15 rounds worth of questions and you can win some fake money.
 After you have reached certain levels, you can walk away with a set amount of money.
 You get one Lifeline which will get rid of half the answer choices.
 
+In order to start the game, compile the game by typing "make".
+Then, type "./main" to begin.
+
 Implementation:
 There is a questions file which anyone can modify and add questions too.
 
