@@ -1,17 +1,19 @@
-CXX 		:= g++
-CXX_FLAGS 	:= -Wall -g -std=c++0x
-#LIBS		:= -lboost_program_options
-SRCS		:= main.cpp question_Input.cpp
-OBJS 		:= $(SRCS:.cpp=.o)
+CXX := g++
+CXX_FLAGS := -Wall -g -std=c++0x
+SRCS := millionaire.cpp main.cpp
+OBJS := $(SRCS:.cpp=.o)
 
 all: main
 
-main: main.o question_Input.o
-	${CXX} $(CXX_FLAGS) -o $@ main.o question_Input.o
+main: ${OBJS}
+	${CXX} $(CXX_FLAGS) -o $@ ${OBJS}
 
-include ../make_depend.mk
-
--include $(SRCS:.cpp=.d)
+%.o : %.cpp
+	$(CXX) $(CXX_FLAGS) -MD -o $@ -c $<
+	@cp $*.d $*.P; \
+	sed -e 's/#.*//' -e 's/^[^:]*: *//' -e 's/ *\\$$//' \
+		-e '/^$$/ d' -e 's/$$/ :/' < $*.P >> $*.d; \
+	rm -f $*.P
 
 clean:
 	-rm *.o *.d *~
