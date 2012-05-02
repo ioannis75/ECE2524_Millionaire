@@ -21,7 +21,6 @@ void millionaire::play(void)
 {
 	welcome();
 	create_question_pool();
-	while(1);
 	question_read();
 	final_screen();
 	while(1);
@@ -59,64 +58,61 @@ void millionaire::question_read(void)
 	ifstream questions ("Flowers_Questions");
 	string question, A, B, C, D, answer;
 
-	tier = 1;
+	tier = 0;
 	round = 1;
 	lifeline = false;
 
-	if (questions.is_open())
+	it = question_pool.begin();
+				
+	while(1)
+	{
+		while(1)
 		{
-			while ( questions.good() )
+			cout << it-> question << endl << it->A << endl << it->B << endl << it->C << endl << it->D << endl;
+			cout << endl;
+			cout << "Enter an answer or type Lifeline to get some help" << endl;
+			getline(std::cin, response, '\n' );
+			if (response == "Lifeline")
 				{
-					getline (questions, question);
-					getline (questions, A);
-					getline (questions, B);
-					getline (questions, C);
-					getline (questions, D);
-					getline (questions, answer);
-
-					while(1)
-					{
-					cout << question << endl << A << endl << B << endl << C << endl << D << endl;
-					cout << endl;
-					cout << "Enter an answer or type Lifeline to get some help" << endl;
+					cout << "Do you want to use your Lifeline to eliminate half the answer choices?" << endl;
 					getline(std::cin, response, '\n' );
-					if (response == "Lifeline")
-					{
-						cout << "Do you want to use your Lifeline to eliminate half the answer choices?" << endl;
-						getline(std::cin, response, '\n' );
-						if (response == "yes")
+					if (response == "yes")
 						{
 							if (!lifeline)
-							{
-							cout << endl;
-							cout << question << endl;
-							life_line(A, B, C, D, answer);
-							cout << endl << "Enter an answer" << endl;
-							getline(std::cin, response, '\n' );
-							lifeline = true;
-							break;
-							}
-						else
-							{
-								cout << endl << "You have no more Lifelines! Here are the question and answer choices again:" << endl << endl;
-							}
+								{
+									cout << endl;
+									cout << it->question << endl;
+									life_line(it->A, it->B, it->C, it->D, it->answer);
+									cout << endl << "Enter an answer" << endl;
+									getline(std::cin, response, '\n' );
+									lifeline = true;
+									break;
+								}
+							else
+								{
+									cout << endl << "You have no more Lifelines! Here are the question and answer choices again:" << endl << endl;
+								}
 						}
-						else cout << endl << "Here the question and answer choices again:" << endl << endl;
-					}
-					else break;
-					}
-					if (check_answer(answer, response)) adjust_score();
-					else return;
-					if (round == 16) break;
-					else
-						{
-							cout << "Press Enter to proceed to the next question" << endl;
-							cin.get();
-						}
+					else cout << endl << "Here the question and answer choices again:" << endl << endl;
 				}
-			questions.close();
+			else break;
 		}
-	return;
+
+		if (check_answer(it->answer, response)) 
+			{
+				adjust_score();
+				it++;
+				cout << endl;
+			}
+		else return;
+
+		if (round == 16) return;
+		else
+			{
+				cout << "Press Enter to proceed to the next question" << endl;
+				cin.get();
+			}
+	}
 }
 
 bool millionaire::check_answer(string answer, string response)
@@ -202,14 +198,16 @@ void millionaire::final_screen(void)
 	cout << endl << "The game is over, thanks for playing!" << endl;
 	switch (tier)
 		{
+			case 0: cout << "You have won $0!" << endl;
+					break;
 			case 1:
-				cout << "You have won first tier money!" << endl;
+				cout << "You have won $1000!" << endl;
 				break;
 			case 2:
-				cout << "You have won second tier money!" << endl;
+				cout << "You have won $32000!" << endl;
 				break;
 			case 3:
-				cout << "You have won third tier money!" << endl;
+				cout << "You have won $1000000!" << endl;
 				break;
 			default: ;
 		}
@@ -291,17 +289,18 @@ void millionaire::create_question_pool(void)
 	for (int i = 0; i <= 14; i++)
 	{
 		while(1)
-		{
-		random_question = rand () % temp_list.size() + 1;
-		temp_it = temp_list.begin();
-		for (int i = 1; i < random_question ; i++) temp_it++;
-		if (temp_it->used == false)
-		{
-			temp_it-> used = true;
-			break;
-		}
-		}
+			{
+				random_question = rand () % temp_list.size() + 1;
+				temp_it = temp_list.begin();
+				for (int i = 1; i < random_question ; i++) temp_it++;
+				if (temp_it->used == false)
+					{
+						temp_it-> used = true;
+						break;
+					}
+			}
 		question_pool.push_back(*temp_it);
 	}
+
 	return;
 }
