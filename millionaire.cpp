@@ -7,18 +7,20 @@ using namespace std;
 
 millionaire::millionaire(void)
 {
-	int tier = 0;
-	int round = 1;
-	int score = 0;
-	int life1 = 0 ;
-	int life2 = 0;
-	bool lifeline = false;
+	tier = 0;
+	round = 1;
+	score = 0;
+	life1 = 0 ;
+	life2 = 0;
+	lifeline = false;
 	
 	return;
 }
 
 void millionaire::play(void)
 {
+	srand ( time(NULL) );
+
 	welcome();
 	create_question_pool();
 	question_read();
