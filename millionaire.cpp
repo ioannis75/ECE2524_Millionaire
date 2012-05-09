@@ -293,7 +293,7 @@ void millionaire::create_question_pool(void)
 	else {
 		cout<<"File does not exist,exiting "<<endl;
 		cin.get();
-		exit();	
+		exit (0);	
 		}
 
 	for (int i = 0; i <= 14; i++)
