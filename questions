@@ -148,7 +148,7 @@ B. exit
 C. wait
 D. kill
 B
-5. What command sends a signal to a process?
+What command sends a signal to a process?
 A. fork
 B. exit
 C. wait
