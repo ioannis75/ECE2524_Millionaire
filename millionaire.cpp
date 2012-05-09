@@ -295,7 +295,14 @@ void millionaire::create_question_pool(void)
 		cin.get();
 		exit (0);	
 		}
-
+	
+	if (temp_list.size()==14){
+	cout<<"Not enough questions, exiting "<<endl;
+	cin.get();
+	exit (0);
+	}
+	else
+	{
 	for (int i = 0; i <= 14; i++)
 	{
 		while(1)
@@ -311,6 +318,6 @@ void millionaire::create_question_pool(void)
 			}
 		question_pool.push_back(*temp_it);
 	}
-
+	}
 	return;
 }
