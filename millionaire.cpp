@@ -292,7 +292,7 @@ void millionaire::create_question_pool(void)
 		}
 	else
 		{
-			cout << "File does not exist, exiting " << endl;
+			cout << "Questions file does not exist, exiting " << endl;
 			cin.get();
 			exit (0);	
 		}
