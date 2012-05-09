@@ -290,34 +290,36 @@ void millionaire::create_question_pool(void)
 				}
 			questions.close();
 		}
-	else {
-		cout<<"File does not exist,exiting "<<endl;
-		cin.get();
-		exit (0);	
+	else
+		{
+			cout << "File does not exist, exiting " << endl;
+			cin.get();
+			exit (0);	
 		}
 	
-	if (temp_list.size()==14){
-	cout<<"Not enough questions, exiting "<<endl;
-	cin.get();
-	exit (0);
-	}
+	if (temp_list.size() == 14)
+		{
+			cout<<"Not enough questions, exiting " << endl;
+			cin.get();
+			exit (0);
+		}
 	else
-	{
-	for (int i = 0; i <= 14; i++)
-	{
-		while(1)
-			{
-				random_question = rand () % temp_list.size() + 1;
-				temp_it = temp_list.begin();
-				for (int i = 1; i < random_question ; i++) temp_it++;
-				if (temp_it->used == false)
-					{
-						temp_it-> used = true;
-						break;
-					}
-			}
-		question_pool.push_back(*temp_it);
-	}
-	}
+		{
+			for (int i = 0; i <= 14; i++)
+				{
+					while(1)
+						{
+							random_question = rand () % temp_list.size() + 1;
+							temp_it = temp_list.begin();
+							for (int i = 1; i < random_question ; i++) temp_it++;
+							if (temp_it->used == false)
+								{
+									temp_it-> used = true;
+									break;
+								}
+						}
+					question_pool.push_back(*temp_it);
+				}
+		}
 	return;
 }
